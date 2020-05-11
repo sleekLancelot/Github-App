@@ -33,12 +33,17 @@ class App extends Component {
 
   getUser = async username => {
     this.setState({ loading: true })
-    console.log(username)
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_ID}&client_secret=${process.env.REACT_APP_SECRETS}`
-    )
-    console.log(res.data);
-    this.setState({ user: res.data, loading: false })
+    try {
+      console.log(username);
+
+      const res = await axios.get(
+        `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_ID}&client_secret=${process.env.REACT_APP_SECRET}`
+      );
+      console.log(res.data);
+      this.setState({ user: res.data, loading: false });
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   clearUsers = () => this.setState({ users: [], loading: false });
@@ -67,7 +72,7 @@ class App extends Component {
                 </Fragment>
               )} />
               <Route path='/about' component={About} />
-              <Route path={'/user/:login'} render={props => (
+              <Route exact path={'/user/:login'} render={props => (
                 <User {...props} getUser={this.getUser} user={user} loading={loading} />
               )} />
             </Switch>
