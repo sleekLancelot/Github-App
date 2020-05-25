@@ -3,7 +3,7 @@ import React from 'react';
 function About() {
     return (
         <div>
-            <p>This is a GitHub Finder App</p>
+            <p>This is a lil App built to look up a GitHub user</p>
         </div>
     )
 }
