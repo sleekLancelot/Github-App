@@ -118,6 +118,23 @@ img {
   height: 200px;
 }
 
+.repoCard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.smallCard {
+  border: #ccc 1px dotted;
+  border-radius: 10px;
+  margin: 0.7rem 1rem;
+  width: 300px;
+  height: 120px;
+}
+
+.smallCard h3 {
+  margin: 0.7rem 0;
+}
+
 /* List */
 .list {
   margin: 0.5rem 0;
